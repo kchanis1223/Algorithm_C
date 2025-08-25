@@ -24,22 +24,24 @@ int main() {
         // cout<<endl;
 
         int minDis = 20;
-        int count= (tmp[0] == '0' ? 1 : 0);
-        for(int j=1;j<tmp.size();j++){
+        int count= 0;
+        bool flag = false;
+        for(int j=0;j<tmp.size();j++){
             if(tmp[j] == '0') {
                 count +=1;
                 //cout<<"count : "<<count<<endl;
                 }
             else {
-                if(count < minDis) {
+                if(count < minDis && flag) {
                     minDis = count;
                     //cout<<"minDis "<<minDis<<endl;
                 }
+                flag = true;
                 count = 0;
                 
             }
         }
-       // cout<<minDis<<endl;
+        //cout<<minDis<<endl;
         if(minDis > result ) result = minDis;
     }
     cout<<result+1;
