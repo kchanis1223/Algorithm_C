@@ -12,7 +12,7 @@ int main() {
         cin >> a[i] >> b[i];
     }
 
-    for(int start=a[0];start<=b[0];start++){
+    for(int start=int(a[0]/2) ;start<=int(b[0]/2);start++){
         int cur = 2 * start;
         bool isValid = true;
         for(int i=0;i<n;i++){
