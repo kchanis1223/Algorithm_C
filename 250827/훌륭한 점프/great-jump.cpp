@@ -16,8 +16,9 @@ int main() {
 
     // Please write your code here.
     for(int max = 1; max<=100; max++){
-        int cur = 0;
+        int cur = 1;
         if(v[cur] > max) continue;
+
         bool isValid = false;
         while(cur<=n){
             bool flag = false;
