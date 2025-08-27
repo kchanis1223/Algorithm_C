@@ -17,6 +17,7 @@ int main() {
     }
 
     // Please write your code here.
+    sort(v.begin(),v.end());
     int maxCount = 0;
     for(int i = 0; i<N;i++){
         int min = v[i];
