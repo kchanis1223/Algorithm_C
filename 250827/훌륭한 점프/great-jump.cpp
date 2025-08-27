@@ -28,7 +28,7 @@ int main() {
                 break;
             }
             for(int i=1;i<=k;i++){
-                if(v[cur+i] <= max) {
+                if(v[cur+i] <= max && v[n] <= max) {
                     cur += i;
                     flag = true;
                     break;
