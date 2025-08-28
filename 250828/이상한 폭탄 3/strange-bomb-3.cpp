@@ -14,7 +14,7 @@ int main() {
         cin >> num[i];
     }
     int maxCount = 0;
-    vector<int> idx;
+    vector<int> v;
     for(int i=0;i<N-1;i++){
         int number = num[i];
         int count = 1;
@@ -24,13 +24,13 @@ int main() {
         //cout<<"i :"<<i<<", count :"<<count<<endl;
         if(maxCount < count){
             maxCount = count;
-            idx = {i+1};
+            v = {number};
         }
         else if(maxCount == count){
-            idx.push_back(i+1);
+            v.push_back(number);
         }
     }
-    cout<< *max_element(idx.begin(),idx.end());
+    cout<< *max_element(v.begin(),v.end());
     // Please write your code here.
 
     return 0;
