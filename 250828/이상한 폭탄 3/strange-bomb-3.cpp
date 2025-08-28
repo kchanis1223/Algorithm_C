@@ -18,10 +18,11 @@ int main() {
     for(int i=0;i<N-1;i++){
         int number = num[i];
         int count = 1;
-        for(int j=i+1;j<=i+K;j++){
+        for(int j=i+1;j<=i+K && j< N; j++){
             if(num[j] == number) count +=1;
         }
         //cout<<"i :"<<i<<", count :"<<count<<endl;
+        if(count == 1) continue;
         if(maxCount < count){
             maxCount = count;
             v = {number};
@@ -30,7 +31,8 @@ int main() {
             v.push_back(number);
         }
     }
-    cout<< *max_element(v.begin(),v.end());
+    if(!v.empty()) cout<< *max_element(v.begin(),v.end());
+    else cout<<0;
     // Please write your code here.
 
     return 0;
