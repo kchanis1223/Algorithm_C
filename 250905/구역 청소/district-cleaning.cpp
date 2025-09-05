@@ -18,6 +18,9 @@ int main() {
         if(c<=a) overlap = d-a;
         else overlap = d-c;
     }
+    else{
+        overlap = b-a;
+    }
     cout<<b-a + d-c - overlap;
     return 0;
 }
