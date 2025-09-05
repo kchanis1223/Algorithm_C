@@ -33,6 +33,7 @@ bool isValid(vector<int> v, int limit){
     int sum =v[0];
     for(int i=1;i<v.size() && block <=m ;i++){
         if(sum + v[i] > limit){
+            if(v[i] > limit) return false;
             block +=1;
             sum = v[i];
         }
