@@ -24,6 +24,6 @@ int main() {
     cin >> a1 >> b1 >> a2 >> b2;
 
     // Please write your code here.
-    isOverlap ? cout<< "overlapping" : cout<< "nonoverlapping";
+    isOverlap() ? cout<< "overlapping" : cout<< "nonoverlapping";
     return 0;
 }
