@@ -9,7 +9,7 @@ int main() {
     cin >> c >> d;
 
     // Please write your code here.
-    int overlap;
+    int overlap = 0;
     if(a <=c && c<= b){
         if(d<=b) overlap = d-c;
         else overlap = b-c;
