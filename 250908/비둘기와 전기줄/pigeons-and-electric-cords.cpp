@@ -17,10 +17,11 @@ int main() {
     // Please write your code here.
     int count = 0;
     for(int i=0;i<N;i++){
-        if(m.find(pigeon[i]) != m.end()){
+        if(m.find(pigeon[i]) == m.end()){
             m[pigeon[i]] = position[i];
         }
         else if(position[i] != m[pigeon[i]]){
+            //cout<<i<<endl;
             m[pigeon[i]] = position[i];
             count +=1;
         }
