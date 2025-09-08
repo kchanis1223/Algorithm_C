@@ -27,7 +27,7 @@ int main() {
         //cout<<i<<" :"<<endl;
         if(u[i] == cur_read) continue;
         cur_s = s;
-        for(int j=i;j<n;j++){
+        for(int j=i;j<m;j++){
             if(cur_s.find(c[j]) != cur_s.end()){
                 cur_s.erase(c[j]);
             }
