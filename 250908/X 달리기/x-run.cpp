@@ -9,36 +9,56 @@ int main() {
 
     // Please write your code here.
 
-    int minTime =INT_MAX;
-    for(int speedLimit=1;speedLimit<=1000; speedLimit++){
-        bool isValid = true;
-        int cur =0;
-        int spendTime =0;
-        int speed =1;
-        while(speed < speedLimit){
-            cur += speed;
-            spendTime +=1;
-            speed +=1;
-            if(cur > X) {
-                isValid = false;
-                break;
-            }
-        }
-        while(speed > 1){
-            cur += speed;
-            spendTime +=1;
-            speed -= 1;
-            if(cur > X) {
-                isValid = false;
-                break;
-            }
-        }
-        if(! isValid) continue;
+    int minTime = INT_MAX;
+    for(int up = 1; up<300;up++){
+        for(int down = up; down <300;down++){
+            for(int maintain = down; maintain <300; maintain++){
+                bool isValid = true;
+                int speed = 1;
+                int cur = 0;
+                int time = 0;
 
-        spendTime += X - cur;
-        //cout<<"speedLimit :"<<speedLimit<<" / spendTime :"<<spendTime<<endl;
-        if(minTime > spendTime) minTime = spendTime;
+                while(time < up){
+                    cur += speed;
+                    speed ++;
+                    time ++;
+                    if(cur > X){
+                        isValid = false;
+                        break;
+                    }
+                }
+                while(time < down){
+                    cur += speed;
+                    speed--;
+                    time ++;
+                    if(cur > X){
+                        isValid = false;
+                        break;
+                    }
+                }
+                while(time < maintain){
+                    cur += speed;
+                    time ++;
+                    if(cur > X){
+                        isValid = false;
+                        break;
+                    }
+                }
+                while(speed > 1){
+                    cur += speed;
+                    speed --;
+                    time ++;
+                    if(cur > X){
+                        isValid = false;
+                        break;
+                    }
+                }
+                if(!isValid) continue;
+                time += X - cur + 1;
+                if(minTime >time) minTime = time;
+            }
+        }
     }
-    cout<<minTime;
+    cout << minTime << '\n';
     return 0;
 }
