@@ -21,18 +21,26 @@ int main() {
     for(int i=0;i<n;i++){
         s.insert(alphabet[i]);
     }
-    for(int i=p-1;i<n;i++){
-        if(s.find(c[i]) != s.end()){
-            s.erase(c[i]);
+    int cur_read = 0;
+    set<char> cur_s;
+    for(int i=0;i<p;i++){
+        //cout<<i<<" :"<<endl;
+        if(u[i] == cur_read) continue;
+        cur_s = s;
+        for(int j=i;j<n;j++){
+            if(cur_s.find(c[j]) != cur_s.end()){
+                cur_s.erase(c[j]);
+            }
         }
+        cur_read = u[i];
+        // for(auto k : cur_s){
+        //     cout<<k<<" ";
+        // }
+        // cout<<endl;
     }
     vector<char> v;
-    for(auto i : s){
+    for(auto i : cur_s){
         v.push_back(i);
-    }
-    if(u[p-1] ==0){
-        cout<<" ";
-        return 0;
     }
     sort(v.begin(),v.end());
     for(auto i : v){
