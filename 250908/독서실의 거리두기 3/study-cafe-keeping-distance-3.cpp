@@ -16,19 +16,25 @@ int main() {
     int maxResult = 0;
     for(int i=0;i<N;i++){
         if(seats[i] == '1') continue;
-        seats[i] = '1';
+        string tmp = seats;
+        tmp[i] = '1';
         vector<int> v;
         int count = 0;
         for(int j=0;j<seats.size();j++){
-            if(seats[j] == '1' && j != 0) {
+            if(tmp[j] == '1' && j != 0) {
                 v.push_back(count);
                 count =0;
             }
-            else{
+            else if (tmp[j] == '0'){
                 count +=1;
             }
         }
-        
+        // cout<<tmp<<endl;
+        // for(auto i : v){
+        //     cout<<i<<" ";
+        // }
+        // cout<<endl;
+        // cout<<endl;
         maxResult = max(*min_element(v.begin(),v.end()) + 1 , maxResult);
     }
     cout<<maxResult;
