@@ -22,8 +22,12 @@ int main() {
         tmp[i] = '1';
 
         int count =0;
+        int flag= false;
         for(int j=0;j<N;j++){
-            if(tmp[j] == '1' && j != 0){
+            if(tmp[j] =='1' && !flag){
+                flag = true; 
+            }
+            else if(tmp[j] == '1' && flag){
                 v.push_back(count);
                 count = 0;      
             }
