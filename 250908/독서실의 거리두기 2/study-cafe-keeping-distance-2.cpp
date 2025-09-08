@@ -31,7 +31,7 @@ int main() {
                 v.push_back(count);
                 count = 0;      
             }
-            else if(tmp[j] == '0'){
+            else if(tmp[j] == '0' && flag){
                 count +=1;
             }
         }
