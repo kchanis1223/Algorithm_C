@@ -27,6 +27,10 @@ int main() {
     else if(positive.size() == 1) {
         cout<< negative[0] * negative[1] * positive[0];
     }
+    else if(positive.size() == 2){
+        if(negative.size() > 1) cout<< negative[0] * negative[1] * positive[1];
+        else cout<< negative[0] * positive[0] * positive[1];
+    }
     else{
         int posEnd = positive.size();
         if( negative[0] * negative[1] >= positive[posEnd-2] * positive[posEnd-3] ) cout<< negative[0] * negative[1] * positive[posEnd-1] ;
