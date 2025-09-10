@@ -34,9 +34,12 @@ int main() {
     // Please write your code here.
     if(!flag)cout<<-1;
     else{ 
+        
         int idx = 0;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<v.size();i++){
+            //cout<<i<<endl;
             if(v[i] == secondMin){
+                //cout<<"true"<<endl;
                 idx = i;
                 break;
             }
