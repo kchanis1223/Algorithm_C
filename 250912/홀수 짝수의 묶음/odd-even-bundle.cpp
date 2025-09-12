@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -8,36 +9,50 @@ int numbers[1000];
 
 int main() {
     cin >> N;
-    vector<int> v;
+    multiset<int> ms;
     for (int i = 0; i < N; i++) {
         cin >> numbers[i];
-        v.push_back( (numbers[i] % 2 != 0 ?1:0) );
+        ms.insert( (numbers[i] % 2 != 0 ?1:0) );
     }
-
-    // Please write your code here.
+    int prev_state = 1;
+    bool isValid = true;
     int count = 0;
-    int group_state = 0;
-    int prev_state = 1; // 0이면 이전 상태 짝수 
-    for(int i=0;i<N;i++){
-        int remain_state = -1;
-        for(int j=i+1;j<N;j++){
-            if(remain_state == -1) remain_state =0;
-            remain_state += v[j];
-            remain_state %=2;
-        }
-        group_state += v[i];
-        group_state %= 2;
-        //cout<<i<<endl;
-        //cout<<"prev:"<<prev_state<<" group :"<<group_state<<" remain:"<<remain_state<<endl;
-        if(group_state != prev_state && remain_state != group_state && remain_state != -1){
-            //cout<<"count++"<<endl;
-            //cout<<"i :"<<i<< "  group_state :"<<group_state<<endl;
-            prev_state = group_state;
-            group_state = 0;
+    // for(auto i : ms){
+    //     cout<< i<<" ";
+    // }
+    // cout<<endl;
+    while(!ms.empty()){
+        if(prev_state == 1){
+            auto it = ms.find(0);
+            if(it != ms.end()){
+                ms.erase(it);
+            }
+            else{
+                if(ms.size() < 2){
+                    isValid = false;
+                    break;
+                }
+                ms.erase(ms.begin());
+                ms.erase(ms.begin());
+            }
+            prev_state = 0;
+            //cout<<" even count++"<<endl;
             count +=1;
         }
-        
+        else{
+            auto it = ms.find(1);
+            if(it == ms.end()){
+                isValid = false;
+                break;
+            }
+            ms.erase(it);
+            prev_state = 1;
+            //cout<<"odd count++"<<endl;
+            count +=1;
+        }
     }
-    cout<<count + 1;
+    if(isValid) cout << count ;
+    else cout<< count-1;
+
     return 0;
 }
