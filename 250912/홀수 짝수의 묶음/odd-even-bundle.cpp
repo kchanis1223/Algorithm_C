@@ -30,6 +30,7 @@ int main() {
             else{
                 if(ms.size() < 2){
                     isValid = false;
+                    cout<<count -1;
                     break;
                 }
                 ms.erase(ms.begin());
@@ -43,6 +44,7 @@ int main() {
             auto it = ms.find(1);
             if(it == ms.end()){
                 isValid = false;
+                cout<<count;
                 break;
             }
             ms.erase(it);
@@ -52,7 +54,6 @@ int main() {
         }
     }
     if(isValid) cout << count ;
-    else cout<< count-1;
 
     return 0;
 }
