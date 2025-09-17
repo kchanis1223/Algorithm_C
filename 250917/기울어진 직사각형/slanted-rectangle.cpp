@@ -56,7 +56,7 @@ int main() {
     int result = 0;
     for(int x =0;x<n;x++){
         for(int y =0;y<n;y++){
-            int maxSum = grid[x][y];
+            int maxSum = 0;
             for(int i=1;i<n;i++){
                 for(int j=1;j<n;j++){
                     if(checkValid(x,y,i,j)){
