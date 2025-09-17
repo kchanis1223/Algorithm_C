@@ -23,9 +23,8 @@ int main() {
             if(value == 0){
                 value = grid[x][y];
                 count +=1;
-                continue;
             }
-            if(value == grid[x][y]){
+            else if(value == grid[x][y]){
                 count +=1;
             }
             else{
@@ -47,9 +46,8 @@ int main() {
             if(value == 0){
                 value = grid[x][y];
                 count +=1;
-                continue;
             }
-            if(value == grid[x][y]){
+            else if(value == grid[x][y]){
                 count +=1;
             }
             else{
