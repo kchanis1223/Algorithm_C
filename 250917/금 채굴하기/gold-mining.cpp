@@ -44,7 +44,7 @@ int main() {
         for(int y=0;y<n;y++){
             int subMax =0;
             //cout<<"x :"<<x<<" , y :"<<y<<endl;
-            for(int k = 0;k<n;k++){
+            for(int k = 0;k<=n;k++){
                 //int cost = checkGrid(x,y,k);
                 int cost = k*k + (k+1)*(k+1);
                 int gold = checkGold(x,y,k);
