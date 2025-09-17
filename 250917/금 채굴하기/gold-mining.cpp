@@ -48,7 +48,7 @@ int main() {
                 //int cost = checkGrid(x,y,k);
                 int cost = k*k + (k+1)*(k+1);
                 int gold = checkGold(x,y,k);
-                if( gold * m > cost && subMax < gold) {
+                if( gold * m >= cost && subMax < gold) {
                     subMax = gold;
                     //cout<<"x :"<<x<<" , y :"<<y<<endl;
                     //cout<<"k :"<<k<< " cost :"<<cost<<" / gold : "<<gold<<endl;
