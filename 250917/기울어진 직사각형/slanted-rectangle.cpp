@@ -7,7 +7,7 @@ int n;
 int grid[20][20];
 
 bool checkValid(int x, int y, int i, int j){
-    if(x - i >= n) return false;
+    if(x - i < 0) return false;
     if( y + i >= n) return false;
 
     if(x - i - j < 0) return false;
@@ -15,6 +15,7 @@ bool checkValid(int x, int y, int i, int j){
 
     if( y - j < 0) return false;
 
+    //cout<<" x:"<<x<<" y:"<<y<<" i:"<<i<<" j:"<<j<<endl;
     return true;
 }
 
@@ -37,11 +38,43 @@ int calSum(int x , int y , int i, int j){
         curY -=1;
         sum +=grid[curX][curY];
     }
-    for(int k=1;k<=i;k++){
+    for(int k=1;k<=j;k++){
         curX +=1;
         curY +=1;
         sum +=grid[curX][curY];
     }
+    return sum;
+}
+int debug_calSum(int x , int y , int i, int j){
+    int sum = 0;
+    int curX = x;
+    int curY = y;
+    for(int k=1;k<=i;k++){
+        curX -=1;
+        curY +=1;
+        sum +=grid[curX][curY];
+        cout<<"sum :"<<sum<<endl;
+    }
+    for(int k=1;k<=j;k++){
+        curX -=1;
+        curY -=1;
+        sum +=grid[curX][curY];
+        cout<<"sum :"<<sum<<endl;
+    }
+    for(int k=1;k<=i;k++){
+        curX +=1;
+        curY -=1;
+        sum +=grid[curX][curY];
+        cout<<"sum :"<<sum<<endl;
+    }
+    for(int k=1;k<=j;k++){
+        curX +=1;
+        curY +=1;
+        sum +=grid[curX][curY];
+        cout<<curX<<","<<curY<<endl;
+        cout<<"sum :"<<sum<<endl;
+    }
+    
     return sum;
 }
 
@@ -61,7 +94,12 @@ int main() {
                 for(int j=1;j<n;j++){
                     if(checkValid(x,y,i,j)){
                         int sum = calSum(x,y,i,j);
-                        if(maxSum < sum) maxSum = sum;
+                        //if(x==3 && y ==1 && i ==2 && j==1 ) sum = debug_calSum(x,y,i,j);
+                
+                        if(maxSum < sum) {
+                            maxSum = sum;
+                            //cout<< "maxSum changed to :" <<sum<<endl;
+                        }
                     }
                 }
             }
