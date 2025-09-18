@@ -9,7 +9,7 @@ bool isValid(int x ,int y, int r, int c){
     if(x + r >= n || y + c >= m) return false;
     for(int i=x;i<=x+r;i++){
         for(int j =y;j<=y+c;j++){
-            if(grid[i][j] < 0) return false;
+            if(grid[i][j] <= 0) return false;
         }
     }
     return true;
@@ -24,11 +24,11 @@ int main() {
         }
     }
     int maxCount = -1;
-    for(int x =0;x<n;x++){
-        for(int y =0;y<m;y++){
+    for(int x =0; x<n; x++){
+        for(int y =0; y<m; y++){
 
-            for(int r = 0;r <n;r++){
-                for(int c =0;c<n;c++){
+            for(int r =0; r <n; r++){
+                for(int c =0; c<m; c++){
                     if(isValid(x,y,r,c) && (maxCount < (r+1)*(c+1) ))  maxCount = (r+1)*(c+1);
                 }
             }
