@@ -63,8 +63,8 @@ int main() {
         int idx = wind.first -1;
         int dir = wind.second; // -1이면 left 바람 
         applyWind(idx,dir);
-        if(idx != 0) applyWindUp(idx-1,-dir);
-        if(idx != n-1) applyWindDown(idx+1,-dir);
+        if(idx != 0 && isValid(idx,idx-1)) applyWindUp(idx-1,-dir);
+        if(idx != n-1 && isValid(idx,idx+1)) applyWindDown(idx+1,-dir);
 
         // for(auto i : grid){
         //     for(auto j : i){
@@ -72,6 +72,7 @@ int main() {
         //     }
         //     cout<<endl;
         // }
+        // cout<<endl<<endl;
     }
 
     for(auto i : grid){
