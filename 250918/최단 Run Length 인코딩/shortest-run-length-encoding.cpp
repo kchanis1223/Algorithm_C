@@ -52,6 +52,7 @@ int main() {
         if(num >= 10) count += 3;
         else count +=2;
     }
-    cout<<count;
+    if(A.size() == 1) cout<<2;
+    else cout<<count;
     return 0;
 }
