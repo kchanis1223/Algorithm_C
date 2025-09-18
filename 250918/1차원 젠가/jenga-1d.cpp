@@ -13,7 +13,7 @@ int main() {
      vector<int> v;
     for (int i = 0; i < n; i++) {
         cin >> blocks[i];
-        v.push_back(blocks[i]);
+        v.insert(v.begin(),(blocks[i]));
     }
     cin >> s1 >> e1;
     cin >> s2 >> e2;
@@ -33,8 +33,8 @@ int main() {
     // }
     // cout<<endl;
     cout<<v3.size()<<endl;
-    for(auto i : v3){
-        cout<<i<<endl;
+    for(int i=v3.size()-1;i>=0;i--){
+        cout<<v3[i]<<endl;
     }
     return 0;
 }
