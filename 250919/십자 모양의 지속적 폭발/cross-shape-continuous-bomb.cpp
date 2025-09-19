@@ -7,9 +7,10 @@ int n, m;
 int grid[200][200];
 
 void explode(int r, int c){
+    //cout<<"r,c : "<<r<<","<<c<<endl;
     int range = grid[r][c]-1;
     //cout<<"range : "<<range<<endl;
-    for(int i= r-range; i<= r+ range; i++){
+    for(int i= r-range; i<= r+range; i++){
         grid[i][c] = 0;
     }
     for(int i = c-range; i<= c+range; i++){
@@ -38,6 +39,7 @@ void apply(int c){
         break;
        }
     }
+    if(r == -1) return;
     explode(r,c);
     gravity();
 }
@@ -63,7 +65,6 @@ int main() {
         // }
         // cout<<endl<<endl;
     }
-
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             cout<<grid[i][j]<<" ";
