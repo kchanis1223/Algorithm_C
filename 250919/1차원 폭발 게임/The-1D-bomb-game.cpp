@@ -12,12 +12,13 @@ void apply(vector<int> &v){
         vector<int> tmp;
         tmp.push_back(v[i]);
         for(int j = i+1;j<v.size();j++){
-            if(v[j] == tmp[i]){
+            if(v[j] == tmp[0]){
                 tmp.push_back(v[j]);
             }
             else break;
         }
         i += tmp.size();
+        //cout<<"tmp.size() : "<<tmp.size()<<endl;
         if(tmp.size() < m){
             for(auto j : tmp){
                 result.push_back(j);
@@ -39,15 +40,17 @@ int main() {
     }
     while(true){
         int count = v.size();
+        // cout<<"before"<<endl;
         // for(auto i : v){
         //     cout<<i<<" ";
         // }
-        // cout<<endl;
+        //cout<<endl;
         apply(v);
+        //cout<<"after"<<endl;
         // for(auto i : v){
         //     cout<<i<<" ";
         // }
-        // cout<<endl;
+        //cout<<endl;
         if(v.size() == count || v.size() < m) break;
     }
     cout<<v.size()<<endl;
