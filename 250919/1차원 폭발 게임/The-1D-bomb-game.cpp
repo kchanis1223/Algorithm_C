@@ -8,20 +8,23 @@ int numbers[100];
 
 void apply(vector<int> &v){
     vector<int> result;
-
     for(int i=0;i<v.size();){
-        int curN = v[i];
-        int count = 1;
-        
-        for(int j=i+1;j<v.size();j++){
-            if(curN == v[j]){
-                count +=1;
+        vector<int> tmp;
+        tmp.push_back(v[i]);
+        for(int j = i+1;j<v.size();j++){
+            if(v[j] == tmp[i]){
+                tmp.push_back(v[j]);
             }
             else break;
         }
-        if(count < m) result.push_back(curN);
-        i += count;
+        i += tmp.size();
+        if(tmp.size() < m){
+            for(auto j : tmp){
+                result.push_back(j);
+            }
+        }
     }
+    
     v = result;
 }
 
@@ -41,8 +44,11 @@ int main() {
         // }
         // cout<<endl;
         apply(v);
-        
-        if(v.size() == count) break;
+        // for(auto i : v){
+        //     cout<<i<<" ";
+        // }
+        // cout<<endl;
+        if(v.size() == count || v.size() < m) break;
     }
     cout<<v.size()<<endl;
     for(int i=v.size()-1;i>=0; i--){
