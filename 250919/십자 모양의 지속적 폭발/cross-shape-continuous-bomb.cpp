@@ -11,10 +11,10 @@ void explode(int r, int c){
     int range = grid[r][c]-1;
     //cout<<"range : "<<range<<endl;
     for(int i= r-range; i<= r+range; i++){
-        grid[i][c] = 0;
+        if(i >=0 && i <n) grid[i][c] = 0;
     }
     for(int i = c-range; i<= c+range; i++){
-        grid[r][i] = 0;
+        if(i >=0 && i <n) grid[r][i] = 0;
     }
 }
 void gravity(){
