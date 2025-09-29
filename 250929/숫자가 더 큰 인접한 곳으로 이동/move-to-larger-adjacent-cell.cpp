@@ -27,20 +27,20 @@ int main() {
     bool isMoved  = true;
     
     vector<int> result= {a[curX][curY]};
-    while(isMoved){
-        isMoved = false;
-        for(int k = 0 ; k<4; k++){
-            int nxtX = curX + dx[k];
-            int nxtY = curY + dy[k];
-            if( checkRange(nxtX,nxtY) && a[curX][curY] < a[nxtX][nxtY]){
-                isMoved = true;
-                curX = nxtX;
-                curY = nxtY;
-                result.push_back(a[curX][curY]);
+    
+    while(true){
+        int dir = -1;
+        for(int i=0;i<4;i++){
+            if( a[curX][curY] < a[curX + dx[i]][curY + dy[i]]){
+                dir = i;
                 break;
             }
         }
+        if(dir == -1) break;
+        curX += dx[dir]; curY +=dy[dir];
+        result.push_back(a[curX][curY]);
     }
+
     for(int i=0;i<result.size();i++){
         cout<<result[i]<<" ";
     }
