@@ -37,6 +37,7 @@ int main() {
                 curX = nxtX;
                 curY = nxtY;
                 result.push_back(a[curX][curY]);
+                break;
             }
         }
     }
