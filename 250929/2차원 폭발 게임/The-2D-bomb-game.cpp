@@ -70,14 +70,18 @@ int main() {
         }
     }
     for(int repeat ; repeat < K; repeat++){
-        explode();
-        // for(int i=0;i<N;i++){
-        //     for(int j=0;j<N;j++){
-        //         cout<< numbers_2d[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
-        // cout<<endl;
+        int prev_count = 0;
+        while(true){
+            explode();
+            int count = 0;
+            for(int i=0;i<N;i++){
+                for(int j=0;j<N;j++){
+                    if(numbers_2d[i][j] != 0) count +=1;
+                }
+            }
+            if(prev_count == count) break;
+            prev_count = count;
+        }
         rotate();
         // for(int i=0;i<N;i++){
         //     for(int j=0;j<N;j++){
@@ -87,15 +91,19 @@ int main() {
         // }
         // cout<<endl;
     }
-    explode();
-    int count = 0;
-    for(int i=0;i<N;i++){
+    int answer = -1;
+    while(true){
+        explode();
+        int count = 0;
+        for(int i=0;i<N;i++){
             for(int j=0;j<N;j++){
                 if(numbers_2d[i][j] != 0) count +=1;
             }
         }
-    cout<<count;
-
+        if(answer == count) break;
+        answer = count;
+    }
+    cout<<answer;
     // Please write your code here.
 
     return 0;
