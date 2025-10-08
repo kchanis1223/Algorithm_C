@@ -28,7 +28,7 @@ int main() {
             break;
         }
     }
-    if(idx > 0){
+    if(idx >= 0){
         for(int j=k-1;j<=m-1+k-1;j++){
             grid[idx][j] = 1;
         }
