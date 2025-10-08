@@ -23,11 +23,16 @@ int main() {
                 break;
             }
         }
+        if(i == n-1){
+            idx = n-1;
+            break;
+        }
         if(!flag){
             idx = i-1;
             break;
         }
     }
+    //cout<<"idx : "<<idx<<endl;
     if(idx >= 0){
         for(int j=k-1;j<=m-1+k-1;j++){
             grid[idx][j] = 1;
