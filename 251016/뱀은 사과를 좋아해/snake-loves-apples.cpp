@@ -29,8 +29,11 @@ struct Snake{
         v.erase(v.begin());
     }
     bool checkBody(int x, int y){
-        for(auto i : v){
-            if(i.first == x && i .second == y) return false;
+        for(int i=0;i<v.size();i++){
+            if(v[i].first == x && v[i].second == y ) {
+                if(i == 0) continue;
+                return false;
+            }
         }
         return true;
     }
