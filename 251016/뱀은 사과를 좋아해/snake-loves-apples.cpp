@@ -79,6 +79,7 @@ int main() {
                 }
 
                 if(isApple[{curX,curY}]){
+                    isApple[{curX,curY}] = false;
                     snake.addHead(curX,curY);
                 }
                 else{
