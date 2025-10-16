@@ -59,7 +59,6 @@ int main() {
     bool isMoved = true;
     for (int i = 0; i < K; i++) {
         if(!isMoved) {
-            time +=1;
             break;
         }
         cin >> d[i] >> p[i];
@@ -71,6 +70,7 @@ int main() {
 
         int count = 0;
         while(count < p[i] ){
+            count += 1;
             if(checkRange(curX+dx[dir],curY+dy[dir])){
                 curX += dx[dir]; curY +=dy[dir];
                 if(!snake.checkBody(curX,curY)){
@@ -90,7 +90,6 @@ int main() {
                 isMoved = false;
                 break;
             }
-            count++;
         }
         // cout<<"snake : ";
         // for(auto i : snake.v){
