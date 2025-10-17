@@ -56,7 +56,7 @@ int main() {
         }
         vector<pair<int,int>> tmp;
         for(auto p : v){
-            if(grid[p.first][p.second] < 2) tmp.push_back(p);
+            if(grid[p.first][p.second] == 1) tmp.push_back(p);
         }
         v= tmp;
         // cout<<"grid"<<endl;
