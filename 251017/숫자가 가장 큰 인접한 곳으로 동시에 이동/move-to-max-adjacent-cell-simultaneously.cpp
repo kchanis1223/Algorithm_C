@@ -24,18 +24,15 @@ int main() {
         }
     }
 
-    grid = vector<vector<int>>(n,vector<int>(n,0));
+    
     vector<pair<int,int>> v;
     for (int i = 0; i < m; i++) {
         cin >> r[i] >> c[i];
         v.push_back({r[i]-1,c[i]-1});
-        grid[r[i]-1][c[i]-1] += 1;
     }
 
     for(int time = 0; time < t ; time ++){
         for(auto &p : v){
-            grid[p.first][p.second] = 0;
-
             int nxtPx; int nxtPy;
             int maxValue = -1;
             for(int k = 0;k<4; k++){
@@ -51,6 +48,7 @@ int main() {
             }
             p.first = nxtPx; p.second = nxtPy;
         }
+        grid = vector<vector<int>>(n,vector<int>(n,0));
         for(auto p : v){
             grid[p.first][p.second] += 1;
         }
@@ -60,13 +58,13 @@ int main() {
         }
         v= tmp;
         // cout<<"grid"<<endl;
-        //     for(auto i : grid){
-        //         for(auto j : i){
-        //             cout<<j<<" ";
-        //         }
-        //         cout<<endl;
+        // for(auto i : grid){
+        //     for(auto j : i){
+        //         cout<<j<<" ";
         //     }
         //     cout<<endl;
+        // }
+        // cout<<endl;
     }
     
     int count = 0;
