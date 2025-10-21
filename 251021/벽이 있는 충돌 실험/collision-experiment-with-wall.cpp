@@ -58,7 +58,7 @@ int main() {
             v.push_back(cube);
         }
 
-        for(int r = 0 ; r < N*N; r++){
+        for(int r = 0 ; r < N*2; r++){
             grid = vector<vector<int>>(N,vector<int>(N,0));
             for(auto &cube : v){
                 cube.moveCube();
@@ -69,10 +69,7 @@ int main() {
                 if(grid[cube.x][cube.y] == 1) tmp .push_back(cube);
             }
             v = tmp;
-            // cout<<" v:"<<endl;
-            // for(auto cube :v){
-            //     cout<<cube.x<<","<<cube.y<<" dir : "<<cube.dir<<endl;
-            // }
+            
         }
         result.push_back(v.size());
     }
