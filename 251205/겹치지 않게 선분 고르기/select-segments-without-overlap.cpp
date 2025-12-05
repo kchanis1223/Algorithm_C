@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -19,6 +20,10 @@ bool isValid(vector<pair<int,int>> v, pair<int,int> l){
 void backtracking(int idx, vector<pair<int,int>> &v){
     if(idx == n) {
         if(v.size() > maxCount) maxCount = v.size();
+        for(auto i : v){
+            //cout<< i.first<<","<<i.second<<" / ";
+        }
+        //cout<<endl;
         return;
     }
 
@@ -38,8 +43,12 @@ int main() {
         cin >> x1[i] >> x2[i];
         lines.push_back({x1[i],x2[i]});
     }
+    sort(lines.begin(),lines.end());
     vector<pair<int,int>> v = {};
     backtracking(0,v);
+    //cout<<endl;
+    v= {};
+    backtracking(1,v);
     cout<<maxCount;
     // Please write your code here.
 
