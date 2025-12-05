@@ -20,12 +20,12 @@ vector<int> run(vector<pair<int,int>> v){
             if(horizon.first < depth) continue;
             if(horizon.second == value){
                 value += 1;
-                depth = horizon.second;
+                depth = horizon.first;
                 continue; 
             }
             if(horizon.second == value -1){
                 value -=1;
-                horizon.second;
+                depth = horizon.first;
                 continue;
             }
         }
