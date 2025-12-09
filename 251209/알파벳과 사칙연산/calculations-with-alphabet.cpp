@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <climits>
 using namespace std;
 
 int N;
@@ -15,6 +16,7 @@ int N;
 // }
 int cal(vector<char>alphabets, vector<char> operators, vector<int> abcdef){
 
+    //if(abcdef[0] != 4) return 0;
     map<char,int> m;
     m['a'] = abcdef[0]; m['b'] = abcdef[1]; m['c'] = abcdef[2];
     m['d'] = abcdef[3]; m['e'] = abcdef[4]; m['f'] = abcdef[5];
@@ -35,8 +37,8 @@ int cal(vector<char>alphabets, vector<char> operators, vector<int> abcdef){
         }
         //cout<<"cur :"<<cur<<" ";
     }
-    //cout<<endl;
-    //cout<<"cal :"<<cur<<endl;
+    // cout<<endl;
+    // cout<<"cal :"<<cur<<endl;
     return cur;
 }
 
@@ -67,11 +69,15 @@ int main() {
             }
         }
     }
-    int maxResult = 0;
+    int maxResult = INT_MIN;
 
     for(auto abcdef : total_abcdef){
         int result = cal(alphabets,operators,abcdef);
-        if(maxResult < result) maxResult = result;
+        if(maxResult < result) {
+            // for(auto i : abcdef) cout<<i;
+            // cout<<endl;
+            maxResult = result;
+        }
     }
     cout<< maxResult;
 
