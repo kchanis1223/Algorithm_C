@@ -7,19 +7,13 @@ int A[20];
 
 int maxCal = 0;
 
-void backtracking(vector<int> &v, int idx){
-    if(v.size() == m){
-        int cal = v[0];
-        for(int i=1;i<v.size();i++){
-            cal ^= v[i];
-        }
-        if(cal > maxCal) maxCal = cal;
+void backtracking(int size, int result, int idx){
+    if(size == m){
+        if(result > maxCal) maxCal = result;
         return;
     }
     for(int i=idx;i<n;i++){
-        v.push_back(A[i]);
-        backtracking(v,idx+1);
-        v.pop_back();
+        backtracking(size+1,result^A[i],i+1);
     }
 }
 
@@ -29,8 +23,7 @@ int main() {
         cin >> A[i];
     }
 
-    vector<int> v= {};
-    backtracking(v,0);
+    backtracking(0,0,0);
     // Please write your code here.
     cout<<maxCal;
     
