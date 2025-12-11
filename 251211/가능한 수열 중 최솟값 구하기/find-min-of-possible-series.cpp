@@ -11,6 +11,7 @@ vector<string> result;
 map<string, set<string>> m;
 
 bool IsValid(string str){
+    //cout<<"isValid str : "<<str<<endl;
     for(int i=1;i<str.size();i++){
         string str1 = str.substr(0,i);
         string str2 = str.substr(i);
@@ -27,41 +28,40 @@ bool IsValid(string str){
         }
         if( s1.find(str2) != s1.end()) return false; 
     }
+    //cout<<"isValid str : "<<str<<" is true"<< endl;
     return true;
 }
 
-void backtracking(string &str){
-    
-    if(str.size() == n){
-        result.push_back(str);
-        return;
-    }
-
-    if( str.back() != '4'){
+void Nxt(int t){
+    string str = result[t];
+    if(str.back() != '4' ){
         str += '4';
-        if( IsValid(str) ) backtracking(str);
+        if(IsValid(str)) {
+            result.push_back(str);
+            return;
+        }
         str.pop_back();
     }
-    if( str.back() != '5'){
+    if(str.back() != '5' ){
         str += '5';
-        if( IsValid(str) ) backtracking(str);
+        if(IsValid(str)) {
+            result.push_back(str);
+            return;
+        }
         str.pop_back();
     }
-    if( str.back() != '6'){
-        str += '6';
-        if( IsValid(str) ) backtracking(str);
-        str.pop_back();
-    }
-    
+    str += '6';
+    result.push_back(str);
+    return;
 }
 
 int main() {
     cin >> n;
     // Please write your code here.
-    string str = "";
-    cout<<str.substr(0,0);
-    backtracking(str);
-    sort(result.begin(),result.end());
-    cout<<result[0];
+    result.push_back("4");
+    for(int i=0;i<81;i++){
+        Nxt(i);
+    }
+    cout<<result[n-1];
     return 0;
 }
