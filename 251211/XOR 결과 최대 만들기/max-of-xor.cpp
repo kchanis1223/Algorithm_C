@@ -11,7 +11,7 @@ void backtracking(vector<int> &v, int idx){
     if(v.size() == m){
         int cal = v[0];
         for(int i=1;i<v.size();i++){
-            cal |= v[i];
+            cal ^= v[i];
         }
         if(cal > maxCal) maxCal = cal;
         return;
@@ -33,5 +33,6 @@ int main() {
     backtracking(v,0);
     // Please write your code here.
     cout<<maxCal;
+    
     return 0;
 }
