@@ -37,17 +37,21 @@ void backtracking(string &str){
         return;
     }
 
-    str += '4';
-    if( IsValid(str) ) backtracking(str);
-    str.pop_back();
-
-    str += '5';
-    if( IsValid(str) ) backtracking(str);
-    str.pop_back();
-
-    str += '6';
-    if( IsValid(str) ) backtracking(str);
-    str.pop_back();
+    if( str.back() != '4'){
+        str += '4';
+        if( IsValid(str) ) backtracking(str);
+        str.pop_back();
+    }
+    if( str.back() != '5'){
+        str += '5';
+        if( IsValid(str) ) backtracking(str);
+        str.pop_back();
+    }
+    if( str.back() != '6'){
+        str += '6';
+        if( IsValid(str) ) backtracking(str);
+        str.pop_back();
+    }
     
 }
 
