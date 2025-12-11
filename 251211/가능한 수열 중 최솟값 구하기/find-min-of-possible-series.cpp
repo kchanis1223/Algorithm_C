@@ -32,36 +32,56 @@ bool IsValid(string str){
     return true;
 }
 
-void Nxt(int t){
-    string str = result[t];
-    if(str.back() != '4' ){
-        str += '4';
-        if(IsValid(str)) {
-            result.push_back(str);
-            return;
-        }
+void backtracking(string &str){
+    if(str.size() == n){
+        result.push_back(str);
+        return;
+    }
+
+    bool isValid = false;
+    if(str.back() != '4'){
+        str += '4'; 
+        if( IsValid(str)) { 
+
+            backtracking(str);
+            isValid = true;
+        } 
         str.pop_back();
     }
-    if(str.back() != '5' ){
-        str += '5';
-        if(IsValid(str)) {
-            result.push_back(str);
-            return;
-        }
+    if(str.back() != '5'){
+        str += '5'; 
+        if( IsValid(str)) { 
+            backtracking(str);
+            isValid = true;
+        } 
         str.pop_back();
     }
-    str += '6';
-    result.push_back(str);
-    return;
+    if(str.back() != '6'){
+        str += '6'; 
+        if( IsValid(str)) { 
+            backtracking(str);
+            isValid = true;
+        } 
+        str.pop_back();
+    }
+
+
 }
 
 int main() {
     cin >> n;
     // Please write your code here.
-    result.push_back("4");
-    for(int i=0;i<81;i++){
-        Nxt(i);
-    }
-    cout<<result[n-1];
+    string str0 = "";
+    string str1="45464564654564546456465"; //23
+    string str2="4546456465456454645646546454654564546456465456";//46
+    string str3="454645646545645464564654645465456454645646545645465456465464546545645";//69
+    if(n < 23) backtracking(str0);
+    else if (n <46) backtracking(str1);
+    else if(n < 69) backtracking(str2);
+    else backtracking(str3);
+    // for(auto i : result){
+    //     cout<<i<<endl;
+    // }
+    cout<<result[0];    
     return 0;
 }
