@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <string>
 #include <set>
+#include <map>
 using namespace std;
 
 int n;
 vector<string> result;
+map<string, set<string>> m;
 
 bool IsValid(string str){
     for(int i=1;i<str.size();i++){
@@ -14,8 +16,14 @@ bool IsValid(string str){
         string str2 = str.substr(i);
 
         set<string> s1;
-        for(int j =0; j< str1.size();j++){
-            s1.insert(str1.substr(j));
+        if(m.find(str1) == m.end() ){
+            for(int j =0; j< str1.size();j++){
+                s1.insert(str1.substr(j));
+            }
+            m[str1] = s1;
+        }
+        else{
+            s1 = m[str1];
         }
         if( s1.find(str2) != s1.end()) return false; 
     }
