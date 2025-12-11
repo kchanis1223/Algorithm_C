@@ -7,11 +7,10 @@
 using namespace std;
 
 int n;
-vector<string> result;
+bool isFind = false;
 map<string, set<string>> m;
 
 bool IsValid(string str){
-    //cout<<"isValid str : "<<str<<endl;
     for(int i=1;i<str.size();i++){
         string str1 = str.substr(0,i);
         string str2 = str.substr(i);
@@ -28,23 +27,22 @@ bool IsValid(string str){
         }
         if( s1.find(str2) != s1.end()) return false; 
     }
-    //cout<<"isValid str : "<<str<<" is true"<< endl;
     return true;
 }
 
 void backtracking(string &str){
+    if(isFind) return;
     if(str.size() == n){
-        result.push_back(str);
+        isFind = true;
+        cout<<str;
         return;
     }
 
-    bool isValid = false;
     if(str.back() != '4'){
         str += '4'; 
         if( IsValid(str)) { 
 
             backtracking(str);
-            isValid = true;
         } 
         str.pop_back();
     }
@@ -52,7 +50,6 @@ void backtracking(string &str){
         str += '5'; 
         if( IsValid(str)) { 
             backtracking(str);
-            isValid = true;
         } 
         str.pop_back();
     }
@@ -60,7 +57,6 @@ void backtracking(string &str){
         str += '6'; 
         if( IsValid(str)) { 
             backtracking(str);
-            isValid = true;
         } 
         str.pop_back();
     }
@@ -72,16 +68,16 @@ int main() {
     cin >> n;
     // Please write your code here.
     string str0 = "";
-    string str1="45464564654564546456465"; //23
-    string str2="4546456465456454645646546454654564546456465456";//46
-    string str3="454645646545645464564654645465456454645646545645465456465464546545645";//69
-    if(n < 23) backtracking(str0);
-    else if (n <46) backtracking(str1);
-    else if(n < 69) backtracking(str2);
-    else backtracking(str3);
+    // string str1="45464564654564546456465"; //23
+    // string str2="4546456465456454645646546454654564546456465456";//46
+    // string str3="454645646545645464564654645465456454645646545645465456465464546545645";//69
+    // if(n < 23) backtracking(str0);
+    // else if (n <46) backtracking(str1);
+    // else if(n < 69) backtracking(str2);
+    // else backtracking(str3);
     // for(auto i : result){
     //     cout<<i<<endl;
     // }
-    cout<<result[0];    
+    backtracking(str0);
     return 0;
 }
