@@ -34,7 +34,7 @@ int main() {
         }
     }
 
-    int result_k = 0;
+    int result_k = 1;
     int result_h = 0;
     for(int k = 1; k<100; k++){
         int count = 0;
