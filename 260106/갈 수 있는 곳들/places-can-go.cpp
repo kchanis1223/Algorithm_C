@@ -29,26 +29,25 @@ int main() {
         queue<pair<int,int>> q;
         q.push({r[t]-1,c[t]-1});
 
-        vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(n,false));
+        //vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(n,false));
         while(!q.empty()){
             int x = q.front().first;
             int y = q.front().second;
             q.pop();
-            if(total[x][y] == true) break;
-            
-            visited[x][y] = true;
+            total[x][y] = true;
+            //visited[x][y] = true;
 
             for(int i=0;i<4;i++){
                 int nx = x +dx[i];
                 int ny = y +dy[i];
-                if(checkRange(nx,ny) && grid[nx][ny] == 0 && !visited[nx][ny]) q.push({nx,ny});
+                if(checkRange(nx,ny) && grid[nx][ny] == 0 && !total[nx][ny]) q.push({nx,ny});
             }
         }
-        for(int i =0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(visited[i][j]) total[i][j] = true;
-            }
-        }
+        // for(int i =0;i<n;i++){
+        //     for(int j=0;j<n;j++){
+        //         if(visited[i][j]) total[i][j] = true;
+        //     }
+        // }
     }
 
     // for(auto i :  total){
