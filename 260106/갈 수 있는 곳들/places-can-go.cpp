@@ -23,42 +23,36 @@ int main() {
     for (int i = 0; i < k; i++) cin >> r[i] >> c[i];
 
     // Please write your code here.
-    vector<vector<bool>> total = vector<vector<bool>>(n,vector<bool>(n,false));
+    vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(n,false));
 
     for(int t =0;t<k; t++){
-        if(total[r[t]-1][c[t]-1]) continue;
-        queue<pair<int,int>> q;
-        q.push({r[t]-1,c[t]-1});
+        int sx = r[t] - 1;
+        int sy = c[t] - 1;
+        if(visited[sx][sy]) continue;
 
-        //vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(n,false));
+        queue<pair<int,int>> q;
+        q.push({sx,sy});
+        visited[sx][sy] = true;
+
         while(!q.empty()){
             int x = q.front().first;
             int y = q.front().second;
+            //cout<<"x,y :"<<x<<","<<y<<endl;
             q.pop();
-            total[x][y] = true;
-            //visited[x][y] = true;
 
             for(int i=0;i<4;i++){
                 int nx = x +dx[i];
                 int ny = y +dy[i];
-                if(checkRange(nx,ny) && grid[nx][ny] == 0 && !total[nx][ny]) q.push({nx,ny});
+                if(checkRange(nx,ny) && grid[nx][ny] == 0 && !visited[nx][ny]) {
+                    q.push({nx,ny});
+                    visited[nx][ny] = true;
+                }
             }
         }
-        // for(int i =0;i<n;i++){
-        //     for(int j=0;j<n;j++){
-        //         if(visited[i][j]) total[i][j] = true;
-        //     }
-        // }
     }
 
-    // for(auto i :  total){
-    //     for(auto j : i) cout<<j<<" ";
-    //     cout<<endl;
-    // }
-    // cout<<endl;
-
     int count = 0;
-    for(auto i :  total){
+    for(auto i :  visited){
         for(auto j : i) if(j == true) count += 1;
     }
     cout<<count;
