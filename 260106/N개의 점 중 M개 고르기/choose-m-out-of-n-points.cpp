@@ -10,16 +10,16 @@ int result = INT_MAX;
 
 
 int calMinDistance(vector<int> v){
-    int minD = INT_MAX;
+    int maxD = 0;
     for(int i=0; i<v.size()-1; i++){
         for(int j=i+1; j<v.size(); j++){
             int xd = x[v[i]] - x[v[j]];
             int yd = y[v[i]] - y[v[j]];
             int value = xd*xd + yd*yd;
-            if(value < minD) minD = value;
+            if(value > maxD) maxD = value;
         }
     }
-    return minD;
+    return maxD;
 }
 void backtracking(vector<int> &v , int idx){
     if(v.size() == m){
