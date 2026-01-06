@@ -34,6 +34,8 @@ int main() {
             int x = q.front().first;
             int y = q.front().second;
             q.pop();
+            if(total[x][y] == true) break;
+            
             visited[x][y] = true;
 
             for(int i=0;i<4;i++){
