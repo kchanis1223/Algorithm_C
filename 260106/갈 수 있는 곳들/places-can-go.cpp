@@ -26,6 +26,7 @@ int main() {
     vector<vector<bool>> total = vector<vector<bool>>(n,vector<bool>(n,false));
 
     for(int t =0;t<k; t++){
+        if(total[r[t]-1][c[t]-1]) continue;
         queue<pair<int,int>> q;
         q.push({r[t]-1,c[t]-1});
 
