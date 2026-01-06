@@ -10,7 +10,7 @@ int a[100][100];
 vector<int> dx = {-1,1,0,0};
 vector<int> dy = {0,0,-1,1};
 bool checkRange(int x , int y) {
-    return x>=0 && x < n && y >=0 &&y < n ? true :false;
+    return x>=0 && x < n && y >=0 &&y < m ? true :false;
 }
 
 
