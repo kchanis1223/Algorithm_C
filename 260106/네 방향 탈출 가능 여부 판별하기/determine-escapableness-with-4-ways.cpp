@@ -33,9 +33,8 @@ int main() {
         int x = q.front().first;
         int y = q.front().second;
         q.pop();
-        visited[x][y] = true;
 
-        if(x == n-1 && y == n-1){
+        if(x == n-1 && y == m-1){
             isSuccess = true;
             break;
         }
@@ -43,7 +42,10 @@ int main() {
         for(int i=0;i<4;i++){
             int nx = x + dx[i];
             int ny = y + dy[i];
-            if(checkRange(nx,ny) && a[nx][ny] && !visited[nx][ny]) q.push({nx,ny});
+            if(checkRange(nx,ny) && a[nx][ny] && !visited[nx][ny]) {
+                q.push({nx,ny});
+                visited[nx][ny] = true;
+            }
         }
     }
     isSuccess ? cout<< 1 : cout<<0;
