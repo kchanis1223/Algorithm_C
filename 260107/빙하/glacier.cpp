@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -19,14 +20,30 @@ bool checkMelting(int x, int y){
         int ny = y + dy[i];
         if(checkRange(nx,ny) && a[nx][ny] == 1) continue;
 
-        bool isAlone = true;
-        for(int j=0;j<4;j++){
-            int nnx = nx + dx[j];
-            int nny = ny + dy[j];
-            if(checkRange(nnx,nny) && a[nnx][nny] == 0) isAlone = false;
-        }
+        bool isIsolate = true;
+        vector<vector<bool>> visited = vector<vector<bool>>(N,vector<bool>(M,false));
+        queue<pair<int,int>> q;
+        q.push({nx,ny});
 
-        if(isAlone) continue;
+        while(!q.empty()){
+            int qx = q.front().first;
+            int qy = q.front().second;
+            q.pop();
+            if(qx == 0 || qx == N-1 || qy == 0 || qy == M-1){
+                isIsolate = false;
+                break;
+            }
+            for(int j=0;j<4;j++){
+                int nqx = qx + dx[j];
+                int nqy = qy + dy[j];
+                if(checkRange(nqx,nqy) && a[nqx][nqy] == 0 && !visited[nqx][nqy]){
+                    q.push({nqx,nqy});
+                    visited[nqx][nqy] = true;
+                }
+            }
+        }
+    
+        if(isIsolate) continue;
 
         isMelt = true;
     }
