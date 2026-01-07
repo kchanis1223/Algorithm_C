@@ -32,6 +32,7 @@ int main() {
 
     // Please write your code here.
 
+    bool isExit = false;
 
     vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(m,false));
     queue<Node> q;
@@ -43,8 +44,9 @@ int main() {
         int y = q.front().y;
         int d = q.front().d;
         q.pop();
-        
+
         if(x ==n-1 && y == m-1){
+            isExit = true;
             cout<<d;
             break;
         }
@@ -57,6 +59,6 @@ int main() {
             }
         }
     }
-    
+    if(!isExit) cout<<-1;
     return 0;
 }
