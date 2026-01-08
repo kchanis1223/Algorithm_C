@@ -15,7 +15,9 @@ int main() {
     dp[4] = 1;
     for(int i=5;i<=n;i++){
         dp[i] = dp[i-2] + dp[i-3];
+        dp[i] %= 10007;
     }
+    //for(auto i : dp) cout<<i<<endl;
     cout<<dp[n];
     return 0;
 }
