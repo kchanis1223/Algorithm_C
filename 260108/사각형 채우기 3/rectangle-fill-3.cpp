@@ -8,13 +8,13 @@ int main() {
     cin >> n;
 
     // Please write your code here.
-    vector<int> dp = vector<int>(n+1,0);
+    vector<long long> dp = vector<long long>(n+1,0);
     dp[0] = 1;
     dp[1] = 2;
     dp[2] = 7;
     
     for(int i=3;i<=n;i++){
-        int exception = 0;
+        long long exception = 0;
         for(int k=3; k<=i;k++){
             exception += dp[i-k];
             exception %= 1000000007;
