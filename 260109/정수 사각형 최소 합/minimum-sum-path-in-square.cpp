@@ -23,7 +23,7 @@ int main() {
         for(int j =n-1; j>=0;j--){
             if(i == 0 && j == n-1) {dp[i][j] = grid[i][j]; continue;}
             
-            dp[i][j] = grid[i][j] + min( (checkRange(i-1,j)? dp[i-1][j] : 1000000) , (checkRange(i,j+1)? dp[i][j+1] : 1000000) );
+            dp[i][j] = grid[i][j] + min( (checkRange(i-1,j)? dp[i-1][j] : INT_MAX) , (checkRange(i,j+1)? dp[i][j+1] : INT_MAX) );
         }
     }
     cout<<dp[n-1][0];
