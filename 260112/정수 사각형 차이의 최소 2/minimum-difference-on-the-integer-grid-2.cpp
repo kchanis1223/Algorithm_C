@@ -38,7 +38,7 @@ void changeDP(int x , int y, Node node){
 int calDif(Node node, int value){
     if(node.min <= value && value <= node.max) return node.max - node.min;
     else if(value < node.min) return node.max - value;
-    else if(node.max < value) return value = node.min;
+    else if(node.max < value) return value - node.min;
 }
 int main() {
     cin >> n;
@@ -64,7 +64,7 @@ int main() {
             }
         }
     }
-    cout<<dp[n-1][n-1].max - dp[n-1][n-1].min;
+    
     // for(auto i : dp){
     //     for(auto j : i){
     //         cout<<"{"<<j.min<<","<<j.max<<"} ";
@@ -72,5 +72,8 @@ int main() {
     //     cout<<endl;
     // }
     // cout<<endl;
+
+    cout<<dp[n-1][n-1].max - dp[n-1][n-1].min;
+
     return 0;
 }
