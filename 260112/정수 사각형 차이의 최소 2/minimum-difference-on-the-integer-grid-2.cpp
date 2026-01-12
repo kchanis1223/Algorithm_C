@@ -1,45 +1,23 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <algorithm>
+#include <queue>
 
 using namespace std;
 
 int n;
 int grid[100][100];
 
-struct Node{
-    int min,max;
-    Node(int min, int max) : min(min) , max(max) {}
-};
-
 bool checkRange(int x, int y){
     return x >=0 && x < n && y >=0 && y < n ? true:false;
 }
 
-vector<vector<Node>> dp; // dp[i][j] 까지 도달했을때 차이를 가장 작게한 최소,최대값
+bool inRange(int start, int end, int value){
+    if(start <= value && value <= end) return true;
+    else return false;
+}
 
-void changeDP(int x , int y, Node node){
-    int value = grid[x][y];
-    if (node.min <= value && value <= node.max){
-        dp[x][y].min = node.min;
-        dp[x][y].max = node.max;
-    }
-    else if(value < node.min){
-        dp[x][y].min = value;
-        dp[x][y].max = node.max;
-        return;
-    }
-    else if(node.max < value){
-        dp[x][y].max = value;
-        dp[x][y].min = node.min;
-        return;
-    }
-}
-int calDif(Node node, int value){
-    if(node.min <= value && value <= node.max) return node.max - node.min;
-    else if(value < node.min) return node.max - value;
-    else if(node.max < value) return value - node.min;
-}
 int main() {
     cin >> n;
 
@@ -48,32 +26,54 @@ int main() {
             cin >> grid[i][j];
         }
     }
+    vector<int> result = vector<int>(101,INT_MAX);
 
-    dp = vector<vector<Node>>(n,vector<Node>(n,Node(0,0)));
-
-    dp[0][0].min = grid[0][0]; dp[0][0].max = grid[0][0];
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            if(i == 0 && j ==0) continue;
-            else if(i == 0) changeDP(i,j,dp[i][j-1]);
-            else if(j == 0) changeDP(i,j,dp[i-1][j]);
-            else{
-                //cout<<"i,j : "<<i<<","<<j<<endl;
-                //cout<<"위쪽 : "<< calDif(dp[i-1][j],grid[i][j])<<"   왼쪽 : "<<calDif(dp[i][j-1],grid[i][j])<<endl;
-                calDif(dp[i-1][j],grid[i][j]) < calDif(dp[i][j-1],grid[i][j]) ? changeDP(i,j,dp[i-1][j]) : changeDP(i,j,dp[i][j-1]);
+    for(int lower = 1; lower<=100; lower++){
+        bool isValid = false;
+        int upper = lower;
+        while(upper <= 100 ){
+            if( !inRange(lower,upper,grid[0][0]) || !inRange(lower,upper,grid[n-1][n-1]) ) {
+                upper ++;
+                continue;
             }
+            vector<vector<bool>> visited = vector<vector<bool>>(n,vector<bool>(n,false));
+            queue<pair<int,int>> q;
+            q.push({0,0});
+            visited[0][0] = true;
+
+            while(!q.empty()){
+                int x = q.front().first;
+                int y = q.front().second;
+                q.pop();
+                if(x == n-1 && y == n-1){
+                    isValid = true;
+                    break;
+                }
+                if(checkRange(x+1,y) && !visited[x+1][y] && inRange(lower,upper,grid[x+1][y])){
+                    q.push({x+1,y});
+                    visited[x+1][y] = true;
+                }
+                if(checkRange(x,y+1) && !visited[x][y+1] && inRange(lower,upper,grid[x][y+1])){
+                    q.push({x,y+1});
+                    visited[x][y+1] = true;
+                }
+            }
+            if(isValid) {
+                //cout<<"upper : "<<upper<<endl;
+                break;
+            }
+            upper++;
+        }
+
+        if(isValid){
+            result[lower] = upper - lower;
+            //cout<<"lower : "<<lower<<" , upper :"<<upper<<endl;
+            //cout<< upper - lower;
         }
     }
+    sort(result.begin(), result.end());
+    cout<<result[0];
     
-    // for(auto i : dp){
-    //     for(auto j : i){
-    //         cout<<"{"<<j.min<<","<<j.max<<"} ";
-    //     }
-    //     cout<<endl;
-    // }
-    // cout<<endl;
-
-    cout<<dp[n-1][n-1].max - dp[n-1][n-1].min;
 
     return 0;
 }
