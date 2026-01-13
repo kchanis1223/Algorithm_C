@@ -18,8 +18,8 @@ int main() {
 
     // Please write your code here.
     sort(v.begin(),v.end());
-    vector<int> dp = vector<int>(n,0); // i번째 선분을 마지막으로 선택했을때의 최대 선택 가능 선분의 갯수
-    dp[0] = 1;
+    vector<int> dp = vector<int>(n,1); // i번째 선분을 마지막으로 선택했을때의 최대 선택 가능 선분의 갯수
+
     for(int i=1;i<n;i++){
         for(int j=0; j<i;j++){
             if(v[j].second < v[i].first) dp[i] = max(dp[i],dp[j] + 1);
