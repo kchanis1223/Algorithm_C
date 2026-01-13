@@ -20,11 +20,12 @@ int main() {
     for(int i=1;i<N;i++){
         int maxCount = 0;
         for(int j=0;j<i;j++){
-            if(M[j] > M[i]) maxCount = dp[j];
+            if(M[j] > M[i] && maxCount < dp[j]) maxCount = dp[j];
         }
         dp[i] = maxCount + 1;
     }
-    sort(dp.begin(),dp.end());
-    cout<<dp[N-1];
+    //for(auto i : dp) cout <<i<<" ";
+    //cout<<endl;
+    cout<<*max_element(dp.begin(),dp.end());
     return 0;
 }
