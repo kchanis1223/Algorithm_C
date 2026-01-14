@@ -24,7 +24,7 @@ int main() {
     }
     //for(auto i : dp) cout<<i<<" ";
     //cout<<endl;
-    cout<<dp[M];
+    dp[M] != 0 ? cout<<dp[M] : cout<<-1;
     // Please write your code here.
 
     return 0;
