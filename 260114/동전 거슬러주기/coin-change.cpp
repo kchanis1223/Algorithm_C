@@ -25,7 +25,8 @@ int main() {
             if(i - coin[j] > 0 && dp[i-coin[j]] != INT_MAX) dp[i] = min(dp[i] , dp[i-coin[j]] + 1);
         }
     }
-    cout<<dp[M];
+    if(dp[M] != INT_MAX) cout<<dp[M];
+    else cout<<-1;
     //for(auto i : dp) cout<<i<<" ";
     // Please write your code here.
 
