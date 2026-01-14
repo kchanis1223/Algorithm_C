@@ -22,10 +22,10 @@ int main() {
 
     for(int i=1;i<=M;i++){
         for(int j=0;j<N;j++){
-            if(i - coin[j] > 0) dp[i] = min(dp[i] , dp[i-coin[j]] + 1);
+            if(i - coin[j] > 0 && dp[i-coin[j]] != INT_MAX) dp[i] = min(dp[i] , dp[i-coin[j]] + 1);
         }
     }
-    cout<<dp[N-1];
+    cout<<dp[M];
     //for(auto i : dp) cout<<i<<" ";
     // Please write your code here.
 
