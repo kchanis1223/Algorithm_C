@@ -22,12 +22,13 @@ int main() {
         int value = v[i];
         for(int k=0;k<=M;k++){
             if(k - weight >= 0) dp[i][k] = max(dp[i-1][k], dp[i-1][k-weight]+value);
+            else dp[i][k] = dp[i-1][k];
         }
     }
 
     int result = 0;
     for(auto i : dp){
-        for(auto j : i) result = max(result,j); //cout<<j<<" ";
+        for(auto j : i) {result = max(result,j);} //cout<<j<<" ";}
         //cout<<endl;
     }
     cout<<result;
