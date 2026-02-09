@@ -8,10 +8,12 @@ int numbers[100000];
 
 int main() {
     cin >> n >> k;
+    int minValue = -100000;
     for (int i = 0; i < n; i++) {
         cin >> numbers[i];
+        minValue = min(numbers[i] , minValue);
     }
-    vector<vector<int>> dp = vector<vector<int>>(k+1,vector<int>(n+1,-10000));
+    vector<vector<int>> dp = vector<vector<int>>(k+1,vector<int>(n+1, minValue));
     // dp[i][j] 음수 i개 선택해서 numbers[j] 까지 고려했을때의 최대 값.
     if(numbers[0] < 0) dp[1][1] = numbers[0];
     else dp[0][1] = numbers[0];
