@@ -13,7 +13,7 @@ int main() {
         cin >> nums[i];
     }
 
-    vector<vector<int>> dp = vector<vector<int>>(N+1, vector<int>(41,0));
+    vector<vector<long long>> dp = vector<vector<long long>>(N+1, vector<long long>(41,0));
     // dp[i][j] 는 i번째 까지 진행하였을때 현재 합이 j-20인 경우의 경우의 수
 
     dp[0][0] = 0;
@@ -30,6 +30,14 @@ int main() {
     // for(auto i : dp){
     //     for(auto j : i){
     //         cout<<j<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+    // cout<<endl;
+    // cout<<dp[N][M+20];
+    // for(int i=25;i<=40;i++){
+    //     for(auto j : dp[i]){
+    //         cout<<j <<" ";
     //     }
     //     cout<<endl;
     // }
