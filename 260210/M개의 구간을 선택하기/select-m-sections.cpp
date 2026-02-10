@@ -14,7 +14,7 @@ int main() {
         cin >> numbers[i];
     }
 
-    vector<vector<int>> dp = vector<vector<int>>(M+1,vector<int>(N+1,0));
+    vector<vector<int>> dp = vector<vector<int>>(M+1,vector<int>(N+1,-500000));
     // dp[m][i] 는 i번째까지 m구간으로 나누었을때 최대 합.
     // Please write your code here.
     dp[1][1] = numbers[0];
@@ -22,6 +22,7 @@ int main() {
         for(int m = 1; m <= M; m++){
             if(m >= i) continue;
             vector<int> v = {dp[m][i-1] + numbers[i-1] , dp[m-1][i-2] + numbers[i-1] , dp[m][i-1]};
+            if(m == 1) v.push_back(numbers[i-1]);
             dp[m][i] = *max_element(v.begin(),v.end());
         }
     }
