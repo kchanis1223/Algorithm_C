@@ -16,14 +16,10 @@ int main() {
     }
     int result = 0;
     for(int i=0;i<n;i++){
-        for(auto [value, v] : m){
-            if(arr[i] + value != k) continue;
-            if(!v.empty()) {
-                for(auto idx : v){
-                    if(idx != i) result += 1;
-                    //cout<<i<<","<<idx<<endl;
-                }
-            }
+        if(m[k-arr[i]].empty()) continue;
+        for(auto idx : m[k-arr[i]]){
+            if(idx != i) result += 1;
+            //cout<<i<<","<<idx<<endl;
         }
     }
     cout<<result/2;
