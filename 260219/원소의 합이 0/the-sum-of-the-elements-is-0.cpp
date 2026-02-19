@@ -32,19 +32,16 @@ int main() {
         }
     }
     map<long long,int> CD;
-        for(auto i : c){
-            for(auto j : d){
-                CD[i+j] ++;
-            }
-        }
-
-    map<long long,int> ABCD;
-    for(auto [v1,c1]: AB){
-        for(auto [v2,c2] :CD){
-            ABCD[v1+v2] += c1*c2;
+    for(auto i : c){
+        for(auto j : d){
+            CD[i+j] ++;
         }
     }
 
-    cout<<ABCD[0];
+    int result = 0;
+    for(auto [value,count]: AB){
+        result += CD[-value] * count;
+    }
+    cout<<result;
     return 0;
 }
