@@ -17,7 +17,7 @@ int main() {
             if(m[x[i]] > y[i]) m[x[i]] = y[i];
         }
     }
-    int sum =0;
+    long long sum =0;
     for(auto i : m){
         //cout<<i.first<<","<<i.second<<endl;
         sum += i.second;
