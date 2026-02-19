@@ -31,18 +31,17 @@ int main() {
             AB[i+j] ++;
         }
     }
-
-    map<long long,int> ABC;
-    for(auto [value,count]: AB){
-        for(auto j :c){
-            ABC[value + j] += count;
+    map<long long,int> CD;
+        for(auto i : c){
+            for(auto j : d){
+                CD[i+j] ++;
+            }
         }
-    }
 
     map<long long,int> ABCD;
-    for(auto [value,count] : ABC){
-        for(auto j :d){
-            ABCD[value + j] += count;
+    for(auto [v1,c1]: AB){
+        for(auto [v2,c2] :CD){
+            ABCD[v1+v2] += c1*c2;
         }
     }
 
