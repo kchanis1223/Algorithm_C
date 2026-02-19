@@ -9,7 +9,7 @@ int x[100000], y[100000];
 
 int main() {
     cin >> n;
-    map<int,int> m;
+    map<long long,long long> m;
     for (int i = 0; i < n; i++) {
         cin >> x[i] >> y[i];
         if( m[x[i]] == 0 ) m[x[i]] = y[i];
