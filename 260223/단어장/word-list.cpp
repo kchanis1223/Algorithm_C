@@ -15,7 +15,7 @@ int main() {
         m[words[i]] ++;
     }
     for(auto i : m){
-        cout<<i.first<<" "<<i.second;
+        cout<<i.first<<" "<<i.second<<endl;
     }
 
     // Please write your code here.
