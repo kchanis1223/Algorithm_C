@@ -14,8 +14,8 @@ int main() {
         cin >> arr[i];
         if(m.find(arr[i]) == m.end()) {
             m[arr[i]] = order;
-            order ++;
         }
+        order ++;
     }
     for(auto i : m){
         cout<<i.first<<" "<<i.second<<endl;
